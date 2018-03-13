@@ -112,7 +112,7 @@ class Blockchain(object):
 		"""
 		Add a new node to the list of nodes
 
-		:param address: <str> Address of node. Eg. 'http://192.168.0.1:5000'
+		:param address: <str> Address of node. Eg. 'http://192.168.0.1:5001'
 		:return: Node
 		"""
 
@@ -288,4 +288,4 @@ def consensus():
 	return jsonify(response), 200
 
 if __name__== '__main__':
-	app.run(host='0.0.0.0', port=5000)
+	app.run(host='0.0.0.0', port=5001)
