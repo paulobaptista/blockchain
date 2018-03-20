@@ -93,6 +93,8 @@ class Blockchain(object):
 		proof = 0
 		while self.valid_proof(last_proof, proof) is False:
 			proof += 1
+		
+		return proof
 
 	@staticmethod
 	def valid_proof(last_proof, proof):
@@ -288,4 +290,4 @@ def consensus():
 	return jsonify(response), 200
 
 if __name__== '__main__':
-	app.run(host='0.0.0.0', port=5000)
+	app.run(host='0.0.0.0', port=5002)
