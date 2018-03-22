@@ -44,7 +44,7 @@ class Blockchain(object):
 		self.chain.append(block)
 		return block
 
-	def new_transaction(self, sender, recipient, amount): 
+	def new_transaction(self, sender, recipient, amount):
 		"""
 		Creates a new transaction to go into the next mened Block
 
@@ -74,7 +74,7 @@ class Blockchain(object):
 		# We must make sure that the Dictionary is Ordered, or we'll have incpnsistant hash
 		block_string = json.dumps(block, sort_keys=True).encode()
 		return hashlib.sha256(block_string).hexdigest()
-				
+
 
 	@property
 	def last_block(self):
@@ -93,7 +93,7 @@ class Blockchain(object):
 		proof = 0
 		while self.valid_proof(last_proof, proof) is False:
 			proof += 1
-		
+
 		return proof
 
 	@staticmethod
@@ -251,10 +251,10 @@ def full_chain():
 
 @app.route('/nodes/register', methods=['POST'])
 def register_nodes():
-	
+
 	values = request.get_json()
 	response = request.json
-	
+
 
 	nodes = values.get('nodes')
 	if nodes is None:
@@ -267,9 +267,9 @@ def register_nodes():
 		'message': 'New nodes have been added',
 		'total_nodes': list(blockchain.nodes),
 	}
-	
+
 	return jsonify(response), 201
-	
+
 
 
 @app.route('/nodes/resolve', methods=['GET'])
@@ -286,8 +286,8 @@ def consensus():
        		'message': 'Our chain is authoritative',
             'chain': blockchain.chain
         }
-	
+
 	return jsonify(response), 200
 
 if __name__== '__main__':
-	app.run(host='0.0.0.0', port=5002)
+	app.run(host='0.0.0.0', port=5000)
